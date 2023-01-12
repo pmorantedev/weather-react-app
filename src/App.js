@@ -49,15 +49,33 @@ function App() {
           />
         </div>
         {(typeof weather.main != "undefined") ? (
-        <><div className="location-box">
+        <><div className="info">
+        <div className="location-box">
             <div className="location">{weather.name}, {weather.sys.country}</div>
             <div className="date">{dateBuilder(new Date())}</div>
-          </div><div className="weather-box">
-              <div className="temp">
-                {Math.round(weather.main.temp)}ºC
-              </div>
-              <div className="weather">{weather.weather[0].main}</div>
-            </div></>
+          </div>
+          <div className="weather-box">
+            <div className="temp">
+              {Math.round(weather.main.temp)}ºC
+            </div>
+            <div className="weather">{weather.weather[0].main}</div>
+          </div>
+          </div>
+        <div className="bottom">
+          <div className="feels">
+            <p className='bold'>{weather.main.feels_like.toFixed()}ºC</p>
+            <p>Feels like</p>
+          </div>
+          <div className="humidity">
+            <p className='bold'>{weather.main.humidity}%</p>
+            <p>Humidity</p>
+          </div>
+          <div className="wind">
+            <p className='bold'>{weather.wind.speed.toFixed()} KM/H</p>
+            <p>Wind speed</p>
+          </div>
+        </div>
+        </>
         ) : ('')}
       </main>
     </div>
